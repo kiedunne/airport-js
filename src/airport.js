@@ -4,10 +4,12 @@ function Airport(weather) {
   this.weather = weather
 }
 
+
+
 Airport.prototype.land = function(plane) {
   if (this.container.length === 5) {
     throw new Error('Airport full');
-  } else if (this.weather === 'Stormy') {
+  } else if (this.weather.randomizer() === 'Stormy') {
     throw new Error('Stormy weather');
   } else {
   this.container.push(plane);
@@ -15,5 +17,8 @@ Airport.prototype.land = function(plane) {
 };
 
 Airport.prototype.takeOff = function(plane) {
+  if (this.weather.randomizer() === 'Stormy') {
+    throw new Error('Stormy weather');
+  }
   this.container.pop(plane)
 };
