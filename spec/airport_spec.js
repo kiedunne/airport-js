@@ -5,11 +5,16 @@ describe("Airport", function() {
   beforeEach(function() {
     plane = new Plane();
     weather = new Weather();
-    airport = new Airport(weather);
+    airport = new Airport(weather, 10);
   });
+
+    it('Can override capacity', function() {
+      expect(airport.capacity).toEqual(10)
+    });
 
     it('Can land planes at the airport', function() {
       spyOn(weather, 'randomizer').and.returnValue('Sunny')
+      airport.takeOff(plane);
       airport.land(plane);
       expect(airport.container).toEqual([plane])
     });
@@ -22,14 +27,17 @@ describe("Airport", function() {
 
     it('Cannot land at a full aiport', function() {
       spyOn(weather, 'randomizer').and.returnValue('Sunny')
-      airport.land(plane);
-      airport.land(plane);
-      airport.land(plane);
-      airport.land(plane);
-      airport.land(plane);
+      airportLimitedCapacity = new Airport(weather, 1);
+      plane1 = new Plane();
+      plane2 = new Plane();
+
+      airportLimitedCapacity.takeOff(plane1)
+      airportLimitedCapacity.land(plane1)
+      airportLimitedCapacity.takeOff(plane2)
+      airportLimitedCapacity.land(plane2)
 
       expect(function() {
-        airport.land(plane);
+        airportLimitedCapacity.land(plane2);
       }).toThrowError('Airport full');
 
   });
@@ -47,4 +55,5 @@ describe("Airport", function() {
        airport.takeOff(plane);
      }).toThrowError('Stormy weather');
    });
+
 });

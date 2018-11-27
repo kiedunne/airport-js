@@ -6,8 +6,8 @@ describe('Plane', function() {
     plane = new Plane();
   });
 
-  it('Creates a plane', function() {
-    expect()
+  it('Creates a plane with a isLanded plane', function() {
+    expect(plane.isLanded).toEqual(true)
 
   });
 
