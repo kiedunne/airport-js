@@ -4,7 +4,8 @@ describe("Airport", function() {
 
   beforeEach(function() {
     plane = new Plane();
-    airport = new Airport(plane);
+    weather = new Weather();
+    airport = new Airport(weather);
   });
 
     it('Can land planes at the airport', function() {
@@ -29,4 +30,13 @@ describe("Airport", function() {
         airport.land(plane);
       }).toThrowError('Airport full');
   });
+
+   it('Cannot land if weather stormy', function() {
+     spyOn(weather, 'randomizer').and.returnValue('Stormy')
+     weather.randomizer('Stormy')
+
+     expect(function() {
+       airport.land(plane);
+     }).toThrowError('Stormy weather');
+   });
 });
