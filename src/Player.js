@@ -20,3 +20,10 @@ Player.prototype.resume = function() {
 Player.prototype.makeFavorite = function() {
   this.currentlyPlayingSong.persistFavoriteStatus(true);
 };
+
+
+player = new Player
+
+console.log(player)
+player.play('best song ever')
+console.log(player.pause)

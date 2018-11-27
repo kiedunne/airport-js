@@ -1,20 +1,7 @@
 function Weather() {
   this.randweather = ['Sunny', 'Stormy']
-
 }
 
-
-
-Weather.prototype.randomize = function () {
-  return 1
-
-  // var nweather = this.randweather[Math.floor(Math.random()*this.randweather.length)]
-  // return nweather
+Weather.prototype.randomizer = function () {
+    return this.randweather[Math.floor(Math.random() * this.randweather.length)];
 };
-//
-// weather = new Weather()
-// console.log(weather)
-
-
-var nweather = Math.random
-)
