@@ -7,9 +7,9 @@ describe("Airport", function() {
     airport = new Airport(plane);
   });
 
-    it('Can land planes at the airport'), function() {
+    it('Can land planes at the airport', function() {
       airport.land(plane);
-      expect(airport.planes).toEqual([plane])
+      expect(airport.container).toEqual([plane])
     });
 
 

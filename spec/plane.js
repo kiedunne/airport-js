@@ -1,5 +1,5 @@
 
-describe('Airplane', function() {
+describe('Plane', function() {
   var plane;
 
   beforeEach(function() {
