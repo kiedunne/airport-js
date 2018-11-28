@@ -1,9 +1,10 @@
+'use strict';
+
 function Airport(weather, capacity = 5) {
   this.container = []
   this.capacity = capacity
   this.weather = weather
 }
-
 
 Airport.prototype.land = function(plane) {
   if (this.container.length === this.capacity) {
